@@ -15,7 +15,30 @@
         --c-white: #e0faff;
         --c-dark: #050508;
         --bg-hud: rgba(2, 4, 8, 0.6);
-    }
+    }.btn-hud-toggle {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: 30;
+    pointer-events: auto;
+
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid var(--c-cyan);
+    color: var(--c-cyan);
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-hud-toggle:hover {
+    background: var(--c-cyan);
+    color: #000;
+    box-shadow: 0 0 20px var(--c-cyan);
+}
 
     body {
         margin: 0;
@@ -24,6 +47,9 @@
         font-family: 'Share Tech Mono', monospace;
         color: var(--c-cyan);
         user-select: none;
+        <button id="toggleHUD" class="btn-hud-toggle">
+    CLEAR VIEW
+</button>
     }
 
     /* --- CAPAS FX (Scanlines y Viñeta) --- */
@@ -204,6 +230,7 @@
     import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
     import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
+    
     // 1. ESCENA BASE
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x020205); // Negro profundo espacio
